@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --yxt-base-spacing: 20px;
+    --color-borders: #d8d8d8;
+    --color-theme-primary: white;
+    --color-text-primary: #213555;
+    --color-text-muted: #3e5879;
+    --color-accent: #f5efe7;
+  }
+}
+
+abbr {
+  @apply !no-underline;
+}
+
+.centered-container {
+  @apply mx-auto px-5 md:px-14 max-w-screen-2xl;
+}
+
+.section {
+  @apply mt-8 mb-16;
+}
+
+/* Cards Config*/
+.cards {
+  @apply border-b last:border-b-0 p-[calc(var(--yxt-base-spacing)*0.75)_var(--yxt-base-spacing)];
+}
+
+/* Carousel*/
+.slider .x {
+  box-sizing: border-box;
+}
+
+.slick-prev {
+  @apply !left-[5px];
+}
+.slick-next {
+  @apply !right-[5px] md:!right-6;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: var(--color-text-primary) !important;
+}
