@@ -93,7 +93,7 @@ const Header = ({ _site, hasBanner = false }: headerProps) => {
                 <a
                   href={item.link}
                   onClick={() => setCurrItem(item.name)}
-                  className={`inline-flex items-center border-b-4 font-bold ${
+                  className={`inline-flex items-center border-b-4 font-bold text-[#39852E] ${
                     !navBg && hasBanner ? `!text-skin-banner` : `text-skin-base`
                   } px-1 pt-1 text-lg ${
                     item.name === currItem

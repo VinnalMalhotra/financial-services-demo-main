@@ -39,7 +39,7 @@ interface TeamSectionProps {
 
 const TeamSection: FC<TeamSectionProps> = ({ teamdata }) => {
   return (
-    <section className="py-10 bg-gray-100">
+    <section className="py-10 bg-white">
       <div className="text-center mb-6">
         <h2 className="text-2xl font-bold">Meet Our Team</h2>
       </div>

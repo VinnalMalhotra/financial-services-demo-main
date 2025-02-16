@@ -74,7 +74,7 @@ const Footer = (props: FooterProps) => {
 
   return (
     <footer
-      className="bg-skin-accent text-skin-base border border-skin-accent border-t"
+      className="bg-gray-100 text-skin-base border border-skin-accent border-t"
       aria-labelledby="footer-heading"
     >
       <h2 id="footer-heading" className="sr-only">
@@ -97,7 +97,7 @@ const Footer = (props: FooterProps) => {
                 >
                   <a
                     href={item.href}
-                    className="text-base leading-6 text-skin-base hover:underline"
+                    className="text-base leading-6 hover:underline text-[#39852E]"
                   >
                     {item.name}
                   </a>
@@ -110,7 +110,7 @@ const Footer = (props: FooterProps) => {
                 >
                   <a
                     href={item.href}
-                    className=" text-base leading-6 text-skin-base hover:underline"
+                    className=" text-base leading-6 hover:underline text-[#39852E]"
                   >
                     {item.name}
                   </a>

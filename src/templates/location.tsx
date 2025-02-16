@@ -203,30 +203,30 @@ const Location: Template<TemplateRenderProps> = ({
       <AnnouncementBanner message = {true} position="left"/>
       <Hero backgroundImage={false} contentPosition="right" imageLeft={false} name={name} c_backgroundImage={c_backgroundImage}/>
       <section className="centered-container flex flex-col w-full mx-auto items-start text-skin-base py-8">
-        <article className="flex  flex-col md:flex-row gap-2 items-start md:items-center">
+        {/* <article className="flex  flex-col md:flex-row gap-2 items-start md:items-center">
           <h1 className="text-2xl md:text-3xl font-medium">{name}</h1>
           <span className="hidden md:block">|</span>
           <HoursStatus hours={hours}></HoursStatus>
-        </article>
+        </article> */}
         <address className="text-base mt-4 md:mt-0 mb-4 gap-4 not-italic flex flex-col md:flex-row justify-start items-start md:justify-start md:items-center w-full">
-          <span className="flex gap-1 text-start md:text-center items-start md:items-center">
+          {/* <span className="flex gap-1 text-start md:text-center items-start md:items-center">
             <MapPinIcon className="h-4 w-4" aria-hidden="true" />
             <Address
               address={address as AddressType}
               lines={[["line1", "city", ",", "region", "postalCode"]]}
             />{" "}
-          </span>
-          <span className="hidden md:block">|</span>
+          </span> */}
+          {/* <span className="hidden md:block">|</span> */}
           <AnalyticsScopeProvider name="ctas">
-            <span className="flex gap-1 text-center items-center hover:underline">
-              <PhoneIcon className="h-4 w-4" aria-hidden="true" />
-              <Link href={`tel:${mainPhone}`} eventName="call" amount={2}>
+            {/* <span className="flex gap-1 text-center items-center hover:underline"> */}
+              {/* <PhoneIcon className="h-4 w-4" aria-hidden="true" /> */}
+              {/* <Link href={`tel:${mainPhone}`} eventName="call" amount={2}>
                 {format_phone(mainPhone)}
-              </Link>
+              </Link> */}
               {/* {format_phone(mainPhone)} */}
-            </span>
+            {/* </span> */}
           </AnalyticsScopeProvider>
-          {yextDisplayCoordinate && (
+          {/* {yextDisplayCoordinate && (
             <Cta
               cta={{
                 label: "Get Directions",
@@ -237,7 +237,7 @@ const Location: Template<TemplateRenderProps> = ({
               aria-label="Secondary call to action"
               otherStyles="ml-auto mr-0 text-sm"
             />
-          )}
+          )} */}
         </address>
         {/* <article className="flex flex-col w-full  mx-auto items-start gap-4">
           <h2 className="sr-only">About {name}</h2>
@@ -248,7 +248,7 @@ const Location: Template<TemplateRenderProps> = ({
         </article> */}
 
 
-        <article className="flex flex-col md:flex-row w-full mx-auto items-start gap-2 md:gap-4 justify-between">
+        <article className="flex flex-col md:flex-row w-full mx-auto items-start gap-2 md:gap-4 justify-between bg-gray-100">
           {services && (
             <>
               <aside
@@ -397,7 +397,7 @@ const Location: Template<TemplateRenderProps> = ({
             </>
           )}
         </article>
-        <article className=" flex justify-center gap-8 mx-auto mt-4">
+        <article className=" flex justify-center gap-8 mx-auto mt-4 bg-gray-100">
           <Cta
             ctaType="primaryCta"
             cta={{ label: "Book appointment", linkType: "URL", link: "" }}
@@ -452,7 +452,7 @@ const Location: Template<TemplateRenderProps> = ({
 
       <Suspense fallback={<FaqsLoader />}>
         {frequentlyAskedQuestions && (
-          <section className="bg-skin-accent md:text-left w-full py-8">
+          <section className="bg-gray-100 md:text-left w-full py-8">
             <LazyFaqs faqs={frequentlyAskedQuestions} title={"FAQs"} />
           </section>
         )}
@@ -474,7 +474,7 @@ const Location: Template<TemplateRenderProps> = ({
 
       <Suspense fallback={<BlogsLoader />}>
         {relatedBlogs.length > 0 && (
-          <article className="bg-skin-accent py-8 flex flex-col md:justify-center w-full mx-auto items-center ">
+          <article className="bg-gray-100 py-8 flex flex-col md:justify-center w-full mx-auto items-center ">
             <LazyBlogs
               linkedArticles={relatedBlogs}
               parentEntityName={name}

@@ -17,7 +17,7 @@ const Promotion = ({
 
     return (
         <div
-            className={`flex items-center justify-center p-6 w-full border border-gray-200 ${backgroundImage ? "relative h-96 bg-cover bg-center" : "flex-row"
+            className={`flex items-center justify-center p-6 w-full  ${backgroundImage ? "relative h-96 bg-cover bg-center" : "flex-row"
                 } ${imageLeft && !backgroundImage ? "flex-row-reverse" : ""}`}
             style={backgroundImage ? { backgroundImage: `url(${uploadedImage})` } : {}}
         >
