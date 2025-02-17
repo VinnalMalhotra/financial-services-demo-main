@@ -28,6 +28,7 @@ import {
   AnalyticsScopeProvider,
   MapboxMaps,
   Map,
+  Event,
 } from "@yext/pages-components";
 import LetsTalk from "../components/LetsTalk";
 import {
@@ -56,6 +57,9 @@ import Business from "../components/BusinessGeocomponent/Business_temp";
 import TeamSection from "../components/MyTeamComponent/myteam";
 import ServiceTitleCarousel from "../components/ServiceTitleComponentCarousel/servicetitlecarousel";
 import { FeaturedCarousels } from "../components/CarouselComponent/carousel";
+import UpcomingEvents from "../components/EventsComponent/events";
+
+
 // const LazyMap = lazy(() => import("../components/LocationBannerMap"));
 const LazyBlogs = lazy(() => import("../components/relatedSections/Blogs"));
 const LazyTeam = lazy(() => import("../components/relatedSections/Team"));
@@ -200,6 +204,7 @@ const Location: Template<TemplateRenderProps> = ({
   return (
     <PageLayout _site={_site} templateData={{ __meta, document }}>
       <AnnouncementBanner message={true} position="left" />
+    
       <Hero
         backgroundImage={false}
         contentPosition="right"
@@ -331,7 +336,7 @@ const Location: Template<TemplateRenderProps> = ({
 
 
           {/* Information Section */}
-          <div className={`flex`}>
+          <div className={`flex w-1/3`}>
             <div className="p-4 pt-0">
               <h2 className="text-xl font-bold mb-2">Information</h2>
               <span className="flex gap-1 ">
@@ -371,16 +376,18 @@ const Location: Template<TemplateRenderProps> = ({
             </div>
           </div>
 
-{/* Hours Section */}
+          {/* Hours Section */}
+          <div className="w-1/3">
           {hours && (
             <Hours hours={hours} customclass="flex text-xl font-bold mb-2" title="Hours" />
           )}
-
-{/* Services Section */}
+</div>
+          {/* Services Section */}
+          <div className="w-1/3">
           {services && (
             <>
               <aside
-                className="hidden md:flex w-1/3 flex-col pointer-events-none hover:cursor-default"
+                className="hidden md:flex flex-col pointer-events-none hover:cursor-default"
                 aria-label="Services"
               >
                 <Disclosure defaultOpen={true}>
@@ -447,6 +454,7 @@ const Location: Template<TemplateRenderProps> = ({
               </aside>
             </>
           )}
+          </div>
         </article>
 
 
@@ -539,6 +547,7 @@ const Location: Template<TemplateRenderProps> = ({
 
       <ServiceTitleCarousel gridCols={3} alignments={{ container: "items-center", text: "text-center" }} />
       <FeaturedCarousels _carousel={c_relatedProducts} gridCols={3} />
+      <UpcomingEvents />
 
       <section className="md:text-left w-full py-8">
         <LetsTalk

@@ -148,7 +148,7 @@ const Hours = (props: Hours) => {
   return (
     <>
       <aside
-        className="hidden md:flex w-1/3 flex-col pointer-events-none hover:cursor-default text-xl font-bold mb-2"
+        className="hidden md:flex  flex-col pointer-events-none hover:cursor-default text-xl font-bold mb-2"
         aria-label="Languages"
       >
         <Disclosure defaultOpen={true}>
