@@ -148,7 +148,7 @@ const Hours = (props: Hours) => {
   return (
     <>
       <aside
-        className="hidden md:flex w-1/3 flex-col pointer-events-none hover:cursor-default"
+        className="hidden md:flex w-1/3 flex-col pointer-events-none hover:cursor-default text-xl font-bold mb-2"
         aria-label="Languages"
       >
         <Disclosure defaultOpen={true}>
@@ -158,7 +158,7 @@ const Hours = (props: Hours) => {
                 aria-expanded={open}
                 className="text-start flex w-full justify-between items-center"
               >
-                <h3 className="font-medium mb-4 text-skin-base">{title}</h3>
+                <h3 className="text-xl font-bold mb-2">{title}</h3>
                 <ChevronDownIcon
                   className={`block md:hidden size-4 fill-skin-base group-hover:fill-skin-base/50 ${
                     open ? "rotate-180" : ""

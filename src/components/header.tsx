@@ -62,7 +62,7 @@ const Header = ({ _site, hasBanner = false }: headerProps) => {
   return (
     <>
       <header
-        className={`hidden md:block w-full top-0 z-50 py-8 ${
+        className={`hidden md:block w-full top-0 z-50 py-2 ${
           navBg
             ? `bg-skin-banner shadow-md fixed`
             : hasBanner

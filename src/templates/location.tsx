@@ -120,9 +120,8 @@ export const config: TemplateConfig = {
 export const getPath: GetPath<TemplateProps> = ({ document }) => {
   return document.slug
     ? document.slug
-    : `${document.locale}/${document.address.region}/${document.address.city}/${
-        document.address.line1
-      }-${document.id.toString()}`;
+    : `${document.locale}/${document.address.region}/${document.address.city}/${document.address.line1
+    }-${document.id.toString()}`;
 };
 
 /**
@@ -200,41 +199,41 @@ const Location: Template<TemplateRenderProps> = ({
 
   return (
     <PageLayout _site={_site} templateData={{ __meta, document }}>
-      <AnnouncementBanner message = {true} position="left"/>
+      <AnnouncementBanner message={true} position="left" />
       <Hero
-  backgroundImage={false}
-  contentPosition="right"
-  imageLeft={false}
-  name={name}
-  c_backgroundImage={c_backgroundImage}
-  yextDisplayCoordinate={{ latitude: 40.7128, longitude: -74.0060 }}
-  getGoogleMapsLink={(coords) => `https://www.google.com/maps?q=${coords.latitude},${coords.longitude}`}
-/>
+        backgroundImage={false}
+        contentPosition="right"
+        imageLeft={false}
+        name={name}
+        c_backgroundImage={c_backgroundImage}
+        yextDisplayCoordinate={{ latitude: 40.7128, longitude: -74.0060 }}
+        getGoogleMapsLink={(coords) => `https://www.google.com/maps?q=${coords.latitude},${coords.longitude}`}
+      />
       <section className="centered-container flex flex-col w-full mx-auto items-start text-skin-base py-8 bg-gray-100">
         {/* <article className="flex  flex-col md:flex-row gap-2 items-start md:items-center">
           <h1 className="text-2xl md:text-3xl font-medium">{name}</h1>
           <span className="hidden md:block">|</span>
           <HoursStatus hours={hours}></HoursStatus>
         </article> */}
-        <address className="text-base mt-4 md:mt-0 mb-4 gap-4 not-italic flex flex-col md:flex-row justify-start items-start md:justify-start md:items-center w-full">
-          {/* <span className="flex gap-1 text-start md:text-center items-start md:items-center">
+        {/* <address className="text-base mt-4 md:mt-0 mb-4 gap-4 not-italic flex flex-col md:flex-row justify-start items-start md:justify-start md:items-center w-full"> */}
+        {/* <span className="flex gap-1 text-start md:text-center items-start md:items-center">
             <MapPinIcon className="h-4 w-4" aria-hidden="true" />
             <Address
               address={address as AddressType}
               lines={[["line1", "city", ",", "region", "postalCode"]]}
             />{" "}
           </span> */}
-          {/* <span className="hidden md:block">|</span> */}
-          <AnalyticsScopeProvider name="ctas">
-            {/* <span className="flex gap-1 text-center items-center hover:underline"> */}
-              {/* <PhoneIcon className="h-4 w-4" aria-hidden="true" /> */}
-              {/* <Link href={`tel:${mainPhone}`} eventName="call" amount={2}>
+        {/* <span className="hidden md:block">|</span> */}
+        {/* <AnalyticsScopeProvider name="ctas"> */}
+        {/* <span className="flex gap-1 text-center items-center hover:underline">
+            <PhoneIcon className="h-4 w-4" aria-hidden="true" />
+            <Link href={`tel:${mainPhone}`} eventName="call" amount={2}>
                 {format_phone(mainPhone)}
-              </Link> */}
-              {/* {format_phone(mainPhone)} */}
-            {/* </span> */}
-          </AnalyticsScopeProvider>
-          {/* {yextDisplayCoordinate && (
+              </Link>
+            {format_phone(mainPhone)}
+            </span> */}
+        {/* </AnalyticsScopeProvider> */}
+        {/* {yextDisplayCoordinate && (
             <Cta
               cta={{
                 label: "Get Directions",
@@ -246,7 +245,7 @@ const Location: Template<TemplateRenderProps> = ({
               otherStyles="ml-auto mr-0 text-sm"
             />
           )} */}
-        </address>
+        {/* </address> */}
         {/* <article className="flex flex-col w-full  mx-auto items-start gap-4">
           <h2 className="sr-only">About {name}</h2>
           <h2 className="text-2xl md:text-3xl font-medium text-skin-base">
@@ -256,8 +255,8 @@ const Location: Template<TemplateRenderProps> = ({
         </article> */}
 
 
-        <article className="flex flex-col md:flex-row w-full mx-auto items-start gap-2 md:gap-4 justify-between bg-gray-100">
-        {languages && (
+        <article className="flex flex-col md:flex-row w-full mx-auto items-start gap-2 md:gap-24 justify-between bg-gray-100">
+          {/* {languages && (
             <>
               <aside
                 className="hidden md:flex w-1/3 flex-col pointer-events-none hover:cursor-default"
@@ -328,15 +327,56 @@ const Location: Template<TemplateRenderProps> = ({
                 </Disclosure>
               </aside>
             </>
-          )}
-          
-          
-        
+          )} */}
+
+
+          {/* Information Section */}
+          <div className={`flex`}>
+            <div className="p-4 pt-0">
+              <h2 className="text-xl font-bold mb-2">Information</h2>
+              <span className="flex gap-1 ">
+                <MapPinIcon className="h-6 w-4" aria-hidden="true" />
+                <Address
+                  address={address as AddressType}
+                  lines={[
+                    ["line1", "city"],  // First line
+                    ["region", "postalCode"]  // Second line
+                  ]}
+                />{" "}
+              </span>
+
+              {yextDisplayCoordinate && (
+                <a
+                  href={getGoogleMapsLink(yextDisplayCoordinate)}
+                  className="text-green-700 font-semibold mt-2 mb-4 block underline"
+                  aria-label="Get Directions"
+                >
+                  Get Directions
+                </a>
+              )}
+
+
+
+              <span className="flex gap-1 text-center items-center hover:underline">
+                <PhoneIcon className="h-4 w-4" aria-hidden="true" />
+                <Link href={`tel:${mainPhone}`} eventName="call" amount={2}>
+                  {format_phone(mainPhone)}
+                </Link>
+
+              </span>
+
+              {/* <p className="mt-2"><span className="font-bold">📞 Phone</span> (339) 291-5039</p>
+              <p><span className="font-bold">📞 Toll-free</span> (800) 291-5039</p> */}
+              <p className="mt-2">✉️ <a href="mailto:email@gmail.com" className="text-green-700 font-semibold">email@gmail.com</a></p>
+            </div>
+          </div>
+
+{/* Hours Section */}
           {hours && (
-            <Hours hours={hours} customclass="w-full md:w-1/3" title="Hours" />
+            <Hours hours={hours} customclass="flex text-xl font-bold mb-2" title="Hours" />
           )}
 
-
+{/* Services Section */}
           {services && (
             <>
               <aside
@@ -350,13 +390,12 @@ const Location: Template<TemplateRenderProps> = ({
                         aria-expanded={open}
                         className="text-start flex w-full justify-between items-center"
                       >
-                        <h3 className="font-medium mb-4 text-skin-base">
+                        <h3 className="text-xl font-bold mb-2">
                           Services
                         </h3>
                         <ChevronDownIcon
-                          className={`block md:hidden size-4 fill-skin-base group-hover:fill-skin-base/50 ${
-                            open ? "rotate-180" : ""
-                          }`}
+                          className={`block md:hidden size-4 fill-skin-base group-hover:fill-skin-base/50 ${open ? "rotate-180" : ""
+                            }`}
                         />
                       </DisclosureButton>
 
@@ -388,9 +427,8 @@ const Location: Template<TemplateRenderProps> = ({
                           Services
                         </h3>
                         <ChevronDownIcon
-                          className={`block md:hidden size-4 fill-skin-base group-hover:fill-skin-base/50 ${
-                            open ? "rotate-180" : ""
-                          }`}
+                          className={`block md:hidden size-4 fill-skin-base group-hover:fill-skin-base/50 ${open ? "rotate-180" : ""
+                            }`}
                         />
                       </DisclosureButton>
 
@@ -410,7 +448,9 @@ const Location: Template<TemplateRenderProps> = ({
             </>
           )}
         </article>
-        <article className=" flex justify-center gap-8 mx-auto mt-4 bg-gray-100">
+
+
+        {/* <article className=" flex justify-center gap-8 mx-auto mt-4 bg-gray-100">
           <Cta
             ctaType="primaryCta"
             cta={{ label: "Book appointment", linkType: "URL", link: "" }}
@@ -419,7 +459,7 @@ const Location: Template<TemplateRenderProps> = ({
             otherStyles="w-full"
             isBookAnAppointment={true}
           />
-        </article>
+        </article> */}
 
         {yextDisplayCoordinate && (
           <Map
@@ -428,11 +468,11 @@ const Location: Template<TemplateRenderProps> = ({
             bounds={
               yextDisplayCoordinate
                 ? [
-                    {
-                      latitude: yextDisplayCoordinate.latitude,
-                      longitude: yextDisplayCoordinate.longitude,
-                    },
-                  ]
+                  {
+                    latitude: yextDisplayCoordinate.latitude,
+                    longitude: yextDisplayCoordinate.longitude,
+                  },
+                ]
                 : undefined
             }
             className="h-64 w-full transition-all delay-300 my-4"
@@ -450,16 +490,16 @@ const Location: Template<TemplateRenderProps> = ({
         )}
 
 
-<Promotion backgroundImage={false} contentPosition="center" imageLeft={true}/>
+        <Promotion backgroundImage={false} contentPosition="center" imageLeft={true} />
 
-<FeaturedProducts _products={c_relatedProducts} gridCols={3}/>
-<Business 
-  name={name} 
-  photoGallery={photoGallery} 
-  description={description} 
-  id={id} 
-  c_primaryCTA={c_primaryCTA || "Learn More"} 
-/>
+        <FeaturedProducts _products={c_relatedProducts} gridCols={3} />
+        <Business
+          name={name}
+          photoGallery={photoGallery}
+          description={description}
+          id={id}
+          c_primaryCTA={c_primaryCTA || "Learn More"}
+        />
 
       </section>
 
@@ -471,7 +511,7 @@ const Location: Template<TemplateRenderProps> = ({
         )}
       </Suspense>
 
-      <TeamSection teamdata={c_relatedProfessionals}/>
+      <TeamSection teamdata={c_relatedProfessionals} />
 
       {/* <Suspense fallback={<TeamLoader />}>
         {c_relatedProfessionals && (
@@ -497,8 +537,8 @@ const Location: Template<TemplateRenderProps> = ({
         )}
       </Suspense>
 
-      <ServiceTitleCarousel gridCols={3} alignments={{ container: "items-center", text: "text-center" }}/>
-      <FeaturedCarousels _carousel={c_relatedProducts} gridCols={3}/>
+      <ServiceTitleCarousel gridCols={3} alignments={{ container: "items-center", text: "text-center" }} />
+      <FeaturedCarousels _carousel={c_relatedProducts} gridCols={3} />
 
       <section className="md:text-left w-full py-8">
         <LetsTalk
