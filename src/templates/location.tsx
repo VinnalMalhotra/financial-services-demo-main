@@ -56,7 +56,7 @@ import { FeaturedProducts } from "../components/ProductsComponent/product";
 import Business from "../components/BusinessGeocomponent/Business_temp";
 import TeamSection from "../components/MyTeamComponent/myteam";
 import ServiceTitleCarousel from "../components/ServiceTitleComponentCarousel/servicetitlecarousel";
-import { FeaturedCarousels } from "../components/CarouselComponent/carousel";
+import { FeaturedCarousels } from "../components/CarouselComponent/Carousel";
 import UpcomingEvents from "../components/EventsComponent/events";
 
 

@@ -2,7 +2,7 @@ import { FC } from "react";
 import { ImageType } from "@yext/pages-components";
 
 interface BusinessProps {
-    photoGallery: { url: string }[]; // Array of images
+    photoGallery: { image: { url: string } }[];
     name: string;
     description: string;
     id: string;

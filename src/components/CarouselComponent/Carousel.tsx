@@ -2,7 +2,7 @@ import { FC } from "react";
 
 // Define prop types for Carousel component
 interface CarouselProps {
-    primaryPhoto: { url: string };
+    primaryPhoto: { image: { url: string } };
     name: string;
     category: string;
     description: string;

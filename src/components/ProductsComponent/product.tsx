@@ -2,7 +2,7 @@ import { FC } from "react";
 
 // Define prop types for Product component
 interface ProductProps {
-    primaryPhoto: { url: string };
+    primaryPhoto: { image: { url: string } };
     name: string;
     category: string;
     description: string;

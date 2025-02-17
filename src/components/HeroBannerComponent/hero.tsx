@@ -1,5 +1,5 @@
 import { ComplexImage } from "@yext/types";
-import { photo as importedLogo } from "./data";
+// import { photo as importedLogo } from "./data";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { ImageType } from "@yext/pages-components";
 import Cta from "../cta";
@@ -19,6 +19,7 @@ interface CTA {
     label: string;
     link: string;
     linkType: "URL" | "internal" | "external"; // Modify if needed
+
 }
 
 
@@ -32,7 +33,7 @@ const Hero = ({
     yextDisplayCoordinate,
     getGoogleMapsLink,
 }: HeroProps) => {
-    const photo = importedLogo;
+    // const photo = importedLogo;
 
     const justifyClass =
         contentPosition === "left" ? "justify-start" :
@@ -70,13 +71,14 @@ const Hero = ({
                                         label: "Get Directions",
                                         link: getGoogleMapsLink(yextDisplayCoordinate),
                                         linkType: "URL",
+
                                     }}
                                     ctaType="secondaryCta"
                                     aria-label="Secondary call to action"
+
                                 />
                             )}
                         </div>
-
                     </div>
                 </div>
             ) : (
@@ -108,7 +110,6 @@ const Hero = ({
                                 />
                             )}
                         </div>
-
                     </div>
                     <div className="w-96 h-64 flex items-center justify-center rounded-lg">
                         <img
