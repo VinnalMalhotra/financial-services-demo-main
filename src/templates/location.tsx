@@ -209,10 +209,11 @@ const Location: Template<TemplateRenderProps> = ({
         backgroundImage={false}
         contentPosition="right"
         imageLeft={false}
+        hours={hours}
         name={name}
         c_backgroundImage={c_backgroundImage}
-        yextDisplayCoordinate={{ latitude: 40.7128, longitude: -74.0060 }}
-        getGoogleMapsLink={(coords) => `https://www.google.com/maps?q=${coords.latitude},${coords.longitude}`}
+        yextDisplayCoordinate={yextDisplayCoordinate}
+        getGoogleMapsLink={getGoogleMapsLink}
       />
       <section className="centered-container flex flex-col w-full mx-auto items-start text-skin-base py-8 bg-gray-100">
         {/* <article className="flex  flex-col md:flex-row gap-2 items-start md:items-center">

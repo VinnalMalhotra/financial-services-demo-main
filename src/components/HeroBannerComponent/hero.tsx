@@ -1,8 +1,7 @@
-import { ComplexImage } from "@yext/types";
-// import { photo as importedLogo } from "./data";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { ImageType } from "@yext/pages-components";
 import Cta from "../cta";
+import { HoursStatus } from "@yext/pages-components";
 
 interface HeroProps {
     backgroundImage?: boolean;
@@ -13,15 +12,14 @@ interface HeroProps {
     cta?: CTA;
     yextDisplayCoordinate?: { latitude: number; longitude: number };
     getGoogleMapsLink?: (coords: { latitude: number; longitude: number }) => string;
+    hours: number;
 }
 
 interface CTA {
     label: string;
     link: string;
-    linkType: "URL" | "internal" | "external"; // Modify if needed
-
+    linkType: "URL" | "internal" | "external";
 }
-
 
 const Hero = ({
     backgroundImage = false,
@@ -32,9 +30,8 @@ const Hero = ({
     cta,
     yextDisplayCoordinate,
     getGoogleMapsLink,
+    hours,
 }: HeroProps) => {
-    // const photo = importedLogo;
-
     const justifyClass =
         contentPosition === "left" ? "justify-start" :
             contentPosition === "right" ? "justify-end" :
@@ -53,15 +50,9 @@ const Hero = ({
                     <div className="max-w-lg">
                         <h2 className="text-sm font-semibold">Parkside Bank</h2>
                         <h1 className="text-2xl font-bold">{name}</h1>
-                        <p className="text-sm font-semibold text-green-400 mt-2">Open Now</p>
-                        <p className="text-sm">Closes at 5:00 PM</p>
-
                         <div className="flex items-center mt-3">
-                            <span className="text-lg font-bold">4.5</span>
-                            <div className="flex ml-2 text-green-400">
-                                <FaStar /><FaStar /><FaStar /><FaStar /><FaStarHalfAlt />
-                            </div>
-                            <span className="ml-2 text-sm">(21 reviews)</span>
+                            <HoursStatus hours={hours}></HoursStatus>
+
                         </div>
 
                         <div className="flex space-x-4 mt-4">
@@ -71,11 +62,9 @@ const Hero = ({
                                         label: "Get Directions",
                                         link: getGoogleMapsLink(yextDisplayCoordinate),
                                         linkType: "URL",
-
                                     }}
                                     ctaType="secondaryCta"
                                     aria-label="Secondary call to action"
-
                                 />
                             )}
                         </div>
@@ -86,15 +75,10 @@ const Hero = ({
                     <div className="w-1/2 p-10">
                         <h2 className="text-sm font-semibold text-gray-700">Parkside Bank</h2>
                         <h1 className="text-2xl font-bold text-gray-900">{name}</h1>
-                        <p className="text-sm font-semibold text-green-600 mt-2">Open Now</p>
-                        <p className="text-sm text-gray-600">Closes at 5:00 PM</p>
 
                         <div className="flex items-center mt-3">
-                            <span className="text-lg font-bold">4.5</span>
-                            <div className="flex ml-2 text-green-600">
-                                <FaStar /><FaStar /><FaStar /><FaStar /><FaStarHalfAlt />
-                            </div>
-                            <span className="ml-2 text-gray-500 text-sm">(21 reviews)</span>
+                            <HoursStatus hours={hours}></HoursStatus>
+
                         </div>
 
                         <div className="flex space-x-4 mt-4">

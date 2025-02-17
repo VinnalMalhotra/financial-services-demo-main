@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Cta from "../cta";
 
 // Define prop types for Product component
 interface ProductProps {
@@ -8,10 +9,11 @@ interface ProductProps {
     description: string;
     id: string;
     c_primaryCTA: string;
+    c_secondaryCTA: string;
 }
 
 // Product Component
-const Product: FC<ProductProps> = ({ primaryPhoto, name, category, description, id, c_primaryCTA }) => {
+const Product: FC<ProductProps> = ({ primaryPhoto, name, category, description, id, c_primaryCTA, c_secondaryCTA }) => {
     return (
         <div className="p-6 bg-white text-black rounded-2xl shadow-lg flex flex-col items-start">
             <img src={primaryPhoto.image.url} alt={name} className="w-80 h-40 object-cover rounded-lg mb-4" />
