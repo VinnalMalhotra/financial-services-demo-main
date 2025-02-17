@@ -17,7 +17,7 @@ const Promotion = ({
 
     return (
         <div
-            className={`flex items-center justify-center p-6 w-full  ${backgroundImage ? "relative h-96 bg-cover bg-center" : "flex-row"
+            className={`flex items-center justify-center p-6 w-full bg-white  ${backgroundImage ? "relative h-96 bg-cover bg-center" : "flex-row"
                 } ${imageLeft && !backgroundImage ? "flex-row-reverse" : ""}`}
             style={backgroundImage ? { backgroundImage: `url(${uploadedImage})` } : {}}
         >
@@ -56,14 +56,18 @@ const Promotion = ({
                         <h2 className="text-sm font-semibold text-gray-700">Featured Promotion</h2>
                         <h1 className="text-2xl font-bold text-gray-900">Parkside Bank MobileBanking App</h1>
                         <p className="text-sm text-gray-600 mt-2">
-                        Bank anytime, anywhere with Parkside Bank! Access all banking services—transfers, bill payments, deposits,  planning with your advisor and more—right from your phone. Secure, fast, and convenient. Download the app today!</p>
+                            Bank anytime, anywhere with Parkside Bank! Access all banking services—transfers, bill payments, deposits,  planning with your advisor and more—right from your phone. Secure, fast, and convenient. Download the app today!</p>
                         {/* <button className="bg-green-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700 mt-4">
                             Learn More
                         </button> */}
 
                         <div className="flex space-x-4 mt-4 -ml-4">
-                            <img src={Appstorelogo} alt="App Store" className="h-20" />
-                            <img src={Googleplaylogo} alt="Google Play" className="h-20" />
+                            <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer">
+                                <img src={Appstorelogo} alt="App Store" className="h-20" />
+                            </a>
+                            <a href="https://play.google.com" target="_blank" rel="noopener noreferrer">
+                                <img src={Googleplaylogo} alt="Google Play" className="h-20" />
+                            </a>
                         </div>
                     </div>
                 </>

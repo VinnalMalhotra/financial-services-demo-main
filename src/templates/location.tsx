@@ -201,8 +201,16 @@ const Location: Template<TemplateRenderProps> = ({
   return (
     <PageLayout _site={_site} templateData={{ __meta, document }}>
       <AnnouncementBanner message = {true} position="left"/>
-      <Hero backgroundImage={false} contentPosition="right" imageLeft={false} name={name} c_backgroundImage={c_backgroundImage}/>
-      <section className="centered-container flex flex-col w-full mx-auto items-start text-skin-base py-8">
+      <Hero
+  backgroundImage={false}
+  contentPosition="right"
+  imageLeft={false}
+  name={name}
+  c_backgroundImage={c_backgroundImage}
+  yextDisplayCoordinate={{ latitude: 40.7128, longitude: -74.0060 }}
+  getGoogleMapsLink={(coords) => `https://www.google.com/maps?q=${coords.latitude},${coords.longitude}`}
+/>
+      <section className="centered-container flex flex-col w-full mx-auto items-start text-skin-base py-8 bg-gray-100">
         {/* <article className="flex  flex-col md:flex-row gap-2 items-start md:items-center">
           <h1 className="text-2xl md:text-3xl font-medium">{name}</h1>
           <span className="hidden md:block">|</span>
@@ -249,6 +257,86 @@ const Location: Template<TemplateRenderProps> = ({
 
 
         <article className="flex flex-col md:flex-row w-full mx-auto items-start gap-2 md:gap-4 justify-between bg-gray-100">
+        {languages && (
+            <>
+              <aside
+                className="hidden md:flex w-1/3 flex-col pointer-events-none hover:cursor-default"
+                aria-label="Languages"
+              >
+                <Disclosure defaultOpen={true}>
+                  {({ open }) => (
+                    <>
+                      <DisclosureButton
+                        aria-expanded={open}
+                        className="text-start flex w-full justify-between items-center"
+                      >
+                        <h3 className="font-medium mb-4 text-skin-base">
+                          Languages
+                        </h3>
+                        <ChevronDownIcon
+                          className={`block md:hidden size-4 fill-skin-base group-hover:fill-skin-base/50 ${
+                            open ? "rotate-180" : ""
+                          }`}
+                        />
+                      </DisclosureButton>
+
+                      <DisclosurePanel
+                        transition
+                        as="article"
+                        className="grid grid-cols-1 md:grid-cols-2 text-skin-muted origin-top transition duration-200 ease-out data-[closed]:-translate-y-6 data-[closed]:opacity-0"
+                      >
+                        {languages.map((item: string, index: number) => (
+                          <p key={index}>{item}</p>
+                        ))}
+                      </DisclosurePanel>
+                    </>
+                  )}
+                </Disclosure>
+              </aside>
+              <aside
+                className="flex md:hidden w-full flex-col"
+                aria-label="Languages"
+              >
+                <Disclosure defaultOpen={false}>
+                  {({ open }) => (
+                    <>
+                      <DisclosureButton
+                        aria-expanded={open}
+                        className="text-start flex w-full justify-between items-center"
+                      >
+                        <h3 className="pb-4 font-medium text-skin-base">
+                          Languages
+                        </h3>
+                        <ChevronDownIcon
+                          className={`block md:hidden size-4 fill-skin-base group-hover:fill-skin-base/50 ${
+                            open ? "rotate-180" : ""
+                          }`}
+                        />
+                      </DisclosureButton>
+
+                      <DisclosurePanel
+                        transition
+                        as="article"
+                        className="grid grid-cols-1 md:grid-cols-2 text-skin-muted origin-top transition duration-200 ease-out data-[closed]:-translate-y-6 data-[closed]:opacity-0"
+                      >
+                        {languages.map((item: string, index: number) => (
+                          <p key={index}>{item}</p>
+                        ))}
+                      </DisclosurePanel>
+                    </>
+                  )}
+                </Disclosure>
+              </aside>
+            </>
+          )}
+          
+          
+        
+          {hours && (
+            <Hours hours={hours} customclass="w-full md:w-1/3" title="Hours" />
+          )}
+
+
           {services && (
             <>
               <aside
@@ -312,81 +400,6 @@ const Location: Template<TemplateRenderProps> = ({
                         className="grid grid-cols-1 md:grid-cols-2 text-skin-muted origin-top transition duration-200 ease-out data-[closed]:-translate-y-6 data-[closed]:opacity-0"
                       >
                         {services.map((item: string, index: number) => (
-                          <p key={index}>{item}</p>
-                        ))}
-                      </DisclosurePanel>
-                    </>
-                  )}
-                </Disclosure>
-              </aside>
-            </>
-          )}
-          {hours && (
-            <Hours hours={hours} customclass="w-full md:w-1/3" title="Hours" />
-          )}
-          {languages && (
-            <>
-              <aside
-                className="hidden md:flex w-1/3 flex-col pointer-events-none hover:cursor-default"
-                aria-label="Languages"
-              >
-                <Disclosure defaultOpen={true}>
-                  {({ open }) => (
-                    <>
-                      <DisclosureButton
-                        aria-expanded={open}
-                        className="text-start flex w-full justify-between items-center"
-                      >
-                        <h3 className="font-medium mb-4 text-skin-base">
-                          Languages
-                        </h3>
-                        <ChevronDownIcon
-                          className={`block md:hidden size-4 fill-skin-base group-hover:fill-skin-base/50 ${
-                            open ? "rotate-180" : ""
-                          }`}
-                        />
-                      </DisclosureButton>
-
-                      <DisclosurePanel
-                        transition
-                        as="article"
-                        className="grid grid-cols-1 md:grid-cols-2 text-skin-muted origin-top transition duration-200 ease-out data-[closed]:-translate-y-6 data-[closed]:opacity-0"
-                      >
-                        {languages.map((item: string, index: number) => (
-                          <p key={index}>{item}</p>
-                        ))}
-                      </DisclosurePanel>
-                    </>
-                  )}
-                </Disclosure>
-              </aside>
-              <aside
-                className="flex md:hidden w-full flex-col"
-                aria-label="Languages"
-              >
-                <Disclosure defaultOpen={false}>
-                  {({ open }) => (
-                    <>
-                      <DisclosureButton
-                        aria-expanded={open}
-                        className="text-start flex w-full justify-between items-center"
-                      >
-                        <h3 className="pb-4 font-medium text-skin-base">
-                          Languages
-                        </h3>
-                        <ChevronDownIcon
-                          className={`block md:hidden size-4 fill-skin-base group-hover:fill-skin-base/50 ${
-                            open ? "rotate-180" : ""
-                          }`}
-                        />
-                      </DisclosureButton>
-
-                      <DisclosurePanel
-                        transition
-                        as="article"
-                        className="grid grid-cols-1 md:grid-cols-2 text-skin-muted origin-top transition duration-200 ease-out data-[closed]:-translate-y-6 data-[closed]:opacity-0"
-                      >
-                        {languages.map((item: string, index: number) => (
                           <p key={index}>{item}</p>
                         ))}
                       </DisclosurePanel>

@@ -12,7 +12,7 @@ interface BusinessProps {
 
 const Business: FC<BusinessProps> = ({ photoGallery, name, description, c_primaryCTA, imageLeft = true }) => {
     return (
-        <div className={`flex flex-col md:flex-row items-center p-8 ${imageLeft ? "md:flex-row" : "md:flex-row-reverse"}`}>
+        <div className={`flex flex-col md:flex-row items-center p-8 bg-white ${imageLeft ? "md:flex-row" : "md:flex-row-reverse"}`}>
             {/* Image Section */}
             <div className="w-full md:w-1/2 flex justify-center">
                 <div className="flex space-x-4 overflow-x-auto">

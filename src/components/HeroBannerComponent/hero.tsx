@@ -2,16 +2,25 @@ import { ComplexImage } from "@yext/types";
 import { photo as importedLogo } from "./data";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { ImageType } from "@yext/pages-components";
-import { CTA } from "@yext/pages-components";
+import Cta from "../cta";
 
 interface HeroProps {
     backgroundImage?: boolean;
     contentPosition?: "left" | "center" | "right";
     imageLeft?: boolean;
     name: string;
-    c_backgroundImage: ImageType
+    c_backgroundImage: ImageType;
     cta?: CTA;
+    yextDisplayCoordinate?: { latitude: number; longitude: number };
+    getGoogleMapsLink?: (coords: { latitude: number; longitude: number }) => string;
 }
+
+interface CTA {
+    label: string;
+    link: string;
+    linkType: "URL" | "internal" | "external"; // Modify if needed
+}
+
 
 const Hero = ({
     backgroundImage = false,
@@ -20,10 +29,11 @@ const Hero = ({
     name = "default",
     c_backgroundImage,
     cta,
+    yextDisplayCoordinate,
+    getGoogleMapsLink,
 }: HeroProps) => {
     const photo = importedLogo;
 
-    // Map content position to Tailwind classes
     const justifyClass =
         contentPosition === "left" ? "justify-start" :
             contentPosition === "right" ? "justify-end" :
@@ -36,7 +46,6 @@ const Hero = ({
             style={backgroundImage ? { backgroundImage: `url(${c_backgroundImage.url})` } : {}}
         >
             {backgroundImage ? (
-                // Content over background image
                 <div
                     className={`absolute inset-0 flex items-center ${justifyClass} p-10 bg-black bg-opacity-40 text-white`}
                 >
@@ -55,17 +64,22 @@ const Hero = ({
                         </div>
 
                         <div className="flex space-x-4 mt-4">
-                            <button className="bg-green-500 text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-600">
-                                Get Directions
-                            </button>
-                            <button className="border border-green-500 text-green-500 py-2 px-4 rounded-lg font-semibold hover:bg-green-100">
-                                Call to Action
-                            </button>
+                            {yextDisplayCoordinate && getGoogleMapsLink && (
+                                <Cta
+                                    cta={{
+                                        label: "Get Directions",
+                                        link: getGoogleMapsLink(yextDisplayCoordinate),
+                                        linkType: "URL",
+                                    }}
+                                    ctaType="secondaryCta"
+                                    aria-label="Secondary call to action"
+                                />
+                            )}
                         </div>
+
                     </div>
                 </div>
             ) : (
-                // Standard layout with separate image
                 <>
                     <div className="w-1/2 p-10">
                         <h2 className="text-sm font-semibold text-gray-700">Parkside Bank</h2>
@@ -82,13 +96,19 @@ const Hero = ({
                         </div>
 
                         <div className="flex space-x-4 mt-4">
-                            <button className="bg-green-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700">
-                                Get Directions
-                            </button>
-                            <button className="border border-green-600 text-green-600 py-2 px-4 rounded-lg font-semibold hover:bg-green-100">
-                                Call to Action
-                            </button>
+                            {yextDisplayCoordinate && getGoogleMapsLink && (
+                                <Cta
+                                    cta={{
+                                        label: "Get Directions",
+                                        link: getGoogleMapsLink(yextDisplayCoordinate),
+                                        linkType: "URL",
+                                    }}
+                                    ctaType="secondaryCta"
+                                    aria-label="Secondary call to action"
+                                />
+                            )}
                         </div>
+
                     </div>
                     <div className="w-96 h-64 flex items-center justify-center rounded-lg">
                         <img
