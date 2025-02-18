@@ -9,7 +9,9 @@ interface BreadcrumbsProps {
   currAddress: string;
 }
 
+
 export const BreadCrumbs = ({ data, currAddress }: BreadcrumbsProps) => {
+  console.log(JSON.stringify (data))
   return (
     <nav aria-label="Breadcrumb" className="flex w-full">
       <ol

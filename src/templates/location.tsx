@@ -570,11 +570,11 @@ const Location: Template<TemplateRenderProps> = ({
 
       <ServiceTitleCarousel gridCols={3} alignments={{ container: "items-center", text: "text-center" }} />
       <FeaturedCarousels _carousel={c_relatedProducts} gridCols={3} />
-      <ThreeGridLayout
+      {c_relatedEvents && <ThreeGridLayout
         title="Upcoming Events"
         relatedItems={c_relatedEvents}
         titleAlignment="center"
-      />
+      />}
 
       {/* <section className="md:text-left w-full py-8">
         <LetsTalk
