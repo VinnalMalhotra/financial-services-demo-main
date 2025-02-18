@@ -220,7 +220,7 @@ const Location: Template<TemplateRenderProps> = ({
 
   return (
     <PageLayout _site={_site} templateData={{ __meta, document }}>
-      <AnnouncementBanner message={true} position="left" />
+      <AnnouncementBanner message={true} position="left"/>
       <article className="centered-container !py-4 hidden md:block">
         <BreadCrumbs
           data={dm_directoryParents_fins_directory}

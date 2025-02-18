@@ -4,11 +4,12 @@ interface AnnouncementBannerProps {
   message?: boolean;
   text?: string;
   position?: "left" | "right" | "center";
+
 }
 
 const AnnouncementBanner: React.FC<AnnouncementBannerProps> = ({
   message = true,
-  text = "This location is currently closed due to Inclement Weather",
+  text = " ⚠ This location is currently closed due to Inclement Weather",
   position = "center",
 }) => {
   const [isVisible, setIsVisible] = useState(message);
