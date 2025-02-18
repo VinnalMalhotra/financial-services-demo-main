@@ -83,15 +83,14 @@ const Hero = ({
 
                         <div className="flex space-x-4 mt-4">
                             {yextDisplayCoordinate && getGoogleMapsLink && (
-                                <Cta
-                                    cta={{
-                                        label: "Get Directions",
-                                        link: getGoogleMapsLink(yextDisplayCoordinate),
-                                        linkType: "URL",
-                                    }}
-                                    ctaType="secondaryCta"
-                                    aria-label="Secondary call to action"
-                                />
+                                <a
+                                    href={getGoogleMapsLink(yextDisplayCoordinate)}
+                                    className="bg-green-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Get Directions
+                                </a>
                             )}
                         </div>
                     </div>

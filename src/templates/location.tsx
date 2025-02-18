@@ -94,6 +94,10 @@ export const config: TemplateConfig = {
       "c_relatedProfessionals.c_relatedBlogs.bodyV2",
       "c_relatedProfessionals.c_relatedBlogs.slug",
       "c_relatedProfessionals.c_relatedBlogs.datePosted",
+      "dm_directoryParents_fins_directory.name",
+      "dm_directoryParents_fins_directory.slug",
+      "dm_directoryParents_fins_directory.id",
+      "dm_directoryParents_fins_directory.c_addressRegionAbbreviation",
       //** name, c_shortDescriptionV2, c_productCTA.name, primaryPhoto */
       "c_relatedProducts.name",
       "c_relatedProducts.c_shortDescriptionV2",
@@ -572,7 +576,7 @@ const Location: Template<TemplateRenderProps> = ({
         titleAlignment="center"
       />
 
-      <section className="md:text-left w-full py-8">
+      {/* <section className="md:text-left w-full py-8">
         <LetsTalk
           description={description}
           phone={mainPhone}
@@ -580,7 +584,7 @@ const Location: Template<TemplateRenderProps> = ({
           geoCodedCoordinate={yextDisplayCoordinate}
           cta={c_primaryCTA}
         />
-      </section>
+      </section> */}
       <ScrollToTop />
     </PageLayout>
   );

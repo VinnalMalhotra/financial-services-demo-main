@@ -1,5 +1,6 @@
 import * as React from "react";
 import { FC } from "react";
+import Cta from "../cta";
 
 interface TeamMember {
   id: string;
@@ -8,9 +9,10 @@ interface TeamMember {
   emails: string;
   c_primaryCTA: string;
   headshot: { url: string };
+  c_secondaryCTA: string;
 }
 
-const TeamCard: FC<TeamMember> = ({ name,  mainPhone, emails, c_primaryCTA, headshot }) => {
+const TeamCard: FC<TeamMember> = ({ name,  mainPhone, emails, c_primaryCTA, headshot, c_secondaryCTA, }) => {
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden">
       <div className="p-4 border-b flex items-center space-x-4">
