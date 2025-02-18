@@ -523,7 +523,7 @@ const Location: Template<TemplateRenderProps> = ({
 
         <Promotion backgroundImage={false} contentPosition="center" imageLeft={true} />
 
-        <FeaturedProducts _products={c_relatedProducts} gridCols={3} />
+        {c_relatedProducts && <FeaturedProducts _products={c_relatedProducts} gridCols={3} />}
         <Business
           name={name}
           photoGallery={photoGallery}
@@ -534,15 +534,15 @@ const Location: Template<TemplateRenderProps> = ({
 
       </section>
 
-      <Suspense fallback={<FaqsLoader />}>
-        {frequentlyAskedQuestions && (
+      {frequentlyAskedQuestions && <Suspense fallback={<FaqsLoader />}>
+        {(
           <section className="bg-gray-100 md:text-left w-full py-8">
             <LazyFaqs faqs={frequentlyAskedQuestions} title={"FAQs"} />
           </section>
         )}
       </Suspense>
-
-      <TeamSection teamdata={c_relatedProfessionals} />
+      }
+      {c_relatedProfessionals && <TeamSection teamdata={c_relatedProfessionals} />}
 
       {/* <Suspense fallback={<TeamLoader />}>
         {c_relatedProfessionals && (
@@ -556,8 +556,8 @@ const Location: Template<TemplateRenderProps> = ({
         )}
       </Suspense> */}
 
-      <Suspense fallback={<BlogsLoader />}>
-        {relatedBlogs.length > 0 && (
+      {relatedBlogs && <Suspense fallback={<BlogsLoader />}>
+        {(
           <article className="bg-gray-100 py-8 flex flex-col md:justify-center w-full mx-auto items-center ">
             <LazyBlogs
               linkedArticles={relatedBlogs}
@@ -567,9 +567,9 @@ const Location: Template<TemplateRenderProps> = ({
           </article>
         )}
       </Suspense>
-
+      }
       <ServiceTitleCarousel gridCols={3} alignments={{ container: "items-center", text: "text-center" }} />
-      <FeaturedCarousels _carousel={c_relatedProducts} gridCols={3} />
+      {c_relatedProducts && <FeaturedCarousels _carousel={c_relatedProducts} gridCols={3} />}
       {c_relatedEvents && <ThreeGridLayout
         title="Upcoming Events"
         relatedItems={c_relatedEvents}
