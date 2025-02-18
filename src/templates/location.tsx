@@ -57,7 +57,8 @@ import Business from "../components/BusinessGeocomponent/Business_temp";
 import TeamSection from "../components/MyTeamComponent/myteam";
 import ServiceTitleCarousel from "../components/ServiceTitleComponentCarousel/servicetitlecarousel";
 import { FeaturedCarousels } from "../components/CarouselComponent/Carousel";
-import UpcomingEvents from "../components/EventsComponent/events";
+import ThreeGridLayout from "../components/EventsComponent/threeGridLayout";
+import BreadCrumbs from "../components/search/breadCrumbs"
 
 
 // const LazyMap = lazy(() => import("../components/LocationBannerMap"));
@@ -107,6 +108,12 @@ export const config: TemplateConfig = {
       "languages",
       "photoGallery",
       "primaryPhoto",
+      "c_relatedEvents.id",
+      "c_relatedEvents.name",
+      "c_relatedEvents.time",
+      "c_relatedEvents.photoGallery",
+      "c_relatedEvents.description",
+      "closed",
     ],
     filter: {
       entityTypes: ["location"],
@@ -185,8 +192,13 @@ const Location: Template<TemplateRenderProps> = ({
     languages,
     __meta,
     c_backgroundImage,
-    c_relatedProducts,
     photoGallery,
+    dm_directoryParents_fins_directory,
+    timezone,
+    c_relatedProducts,
+    c_relatedPromo,
+    c_relatedEvents,
+    closed,
   } = document;
 
   const [relatedBlogs, setRelatedBlogs] = useState([]);
@@ -204,7 +216,13 @@ const Location: Template<TemplateRenderProps> = ({
   return (
     <PageLayout _site={_site} templateData={{ __meta, document }}>
       <AnnouncementBanner message={true} position="left" />
-    
+      <article className="centered-container !py-4 hidden md:block">
+        <BreadCrumbs
+          data={dm_directoryParents_fins_directory}
+          currAddress={address.line1}
+        />
+      </article>
+
       <Hero
         backgroundImage={false}
         contentPosition="right"
@@ -379,82 +397,82 @@ const Location: Template<TemplateRenderProps> = ({
 
           {/* Hours Section */}
           <div className="w-1/3">
-          {hours && (
-            <Hours hours={hours} customclass="flex text-xl font-bold mb-2" title="Hours" />
-          )}
-</div>
+            {hours && (
+              <Hours hours={hours} customclass="flex text-xl font-bold mb-2" title="Hours" />
+            )}
+          </div>
           {/* Services Section */}
           <div className="w-1/3">
-          {services && (
-            <>
-              <aside
-                className="hidden md:flex flex-col pointer-events-none hover:cursor-default"
-                aria-label="Services"
-              >
-                <Disclosure defaultOpen={true}>
-                  {({ open }) => (
-                    <>
-                      <DisclosureButton
-                        aria-expanded={open}
-                        className="text-start flex w-full justify-between items-center"
-                      >
-                        <h3 className="text-xl font-bold mb-2">
-                          Services
-                        </h3>
-                        <ChevronDownIcon
-                          className={`block md:hidden size-4 fill-skin-base group-hover:fill-skin-base/50 ${open ? "rotate-180" : ""
-                            }`}
-                        />
-                      </DisclosureButton>
+            {services && (
+              <>
+                <aside
+                  className="hidden md:flex flex-col pointer-events-none hover:cursor-default"
+                  aria-label="Services"
+                >
+                  <Disclosure defaultOpen={true}>
+                    {({ open }) => (
+                      <>
+                        <DisclosureButton
+                          aria-expanded={open}
+                          className="text-start flex w-full justify-between items-center"
+                        >
+                          <h3 className="text-xl font-bold mb-2">
+                            Services
+                          </h3>
+                          <ChevronDownIcon
+                            className={`block md:hidden size-4 fill-skin-base group-hover:fill-skin-base/50 ${open ? "rotate-180" : ""
+                              }`}
+                          />
+                        </DisclosureButton>
 
-                      <DisclosurePanel
-                        transition
-                        as="article"
-                        className="grid grid-cols-1 md:grid-cols-2 text-skin-muted origin-top transition duration-200 ease-out data-[closed]:-translate-y-6 data-[closed]:opacity-0"
-                      >
-                        {services.map((item: string, index: number) => (
-                          <p key={index}>{item}</p>
-                        ))}
-                      </DisclosurePanel>
-                    </>
-                  )}
-                </Disclosure>
-              </aside>
-              <aside
-                className="flex md:hidden w-full flex-col"
-                aria-label="Services"
-              >
-                <Disclosure defaultOpen={true}>
-                  {({ open }) => (
-                    <>
-                      <DisclosureButton
-                        aria-expanded={open}
-                        className=" text-start flex w-full justify-between items-center"
-                      >
-                        <h3 className="pb-4 font-medium  text-skin-base">
-                          Services
-                        </h3>
-                        <ChevronDownIcon
-                          className={`block md:hidden size-4 fill-skin-base group-hover:fill-skin-base/50 ${open ? "rotate-180" : ""
-                            }`}
-                        />
-                      </DisclosureButton>
+                        <DisclosurePanel
+                          transition
+                          as="article"
+                          className="grid grid-cols-1 md:grid-cols-2 text-skin-muted origin-top transition duration-200 ease-out data-[closed]:-translate-y-6 data-[closed]:opacity-0"
+                        >
+                          {services.map((item: string, index: number) => (
+                            <p key={index}>{item}</p>
+                          ))}
+                        </DisclosurePanel>
+                      </>
+                    )}
+                  </Disclosure>
+                </aside>
+                <aside
+                  className="flex md:hidden w-full flex-col"
+                  aria-label="Services"
+                >
+                  <Disclosure defaultOpen={true}>
+                    {({ open }) => (
+                      <>
+                        <DisclosureButton
+                          aria-expanded={open}
+                          className=" text-start flex w-full justify-between items-center"
+                        >
+                          <h3 className="pb-4 font-medium  text-skin-base">
+                            Services
+                          </h3>
+                          <ChevronDownIcon
+                            className={`block md:hidden size-4 fill-skin-base group-hover:fill-skin-base/50 ${open ? "rotate-180" : ""
+                              }`}
+                          />
+                        </DisclosureButton>
 
-                      <DisclosurePanel
-                        transition
-                        as="article"
-                        className="grid grid-cols-1 md:grid-cols-2 text-skin-muted origin-top transition duration-200 ease-out data-[closed]:-translate-y-6 data-[closed]:opacity-0"
-                      >
-                        {services.map((item: string, index: number) => (
-                          <p key={index}>{item}</p>
-                        ))}
-                      </DisclosurePanel>
-                    </>
-                  )}
-                </Disclosure>
-              </aside>
-            </>
-          )}
+                        <DisclosurePanel
+                          transition
+                          as="article"
+                          className="grid grid-cols-1 md:grid-cols-2 text-skin-muted origin-top transition duration-200 ease-out data-[closed]:-translate-y-6 data-[closed]:opacity-0"
+                        >
+                          {services.map((item: string, index: number) => (
+                            <p key={index}>{item}</p>
+                          ))}
+                        </DisclosurePanel>
+                      </>
+                    )}
+                  </Disclosure>
+                </aside>
+              </>
+            )}
           </div>
         </article>
 
@@ -548,7 +566,11 @@ const Location: Template<TemplateRenderProps> = ({
 
       <ServiceTitleCarousel gridCols={3} alignments={{ container: "items-center", text: "text-center" }} />
       <FeaturedCarousels _carousel={c_relatedProducts} gridCols={3} />
-      <UpcomingEvents />
+      <ThreeGridLayout
+        title="Upcoming Events"
+        relatedItems={c_relatedEvents}
+        titleAlignment="center"
+      />
 
       <section className="md:text-left w-full py-8">
         <LetsTalk
