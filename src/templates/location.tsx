@@ -522,7 +522,7 @@ const Location: Template<TemplateRenderProps> = ({
         )}
 
 
-        <Promotion backgroundImage={false} contentPosition="center" imageLeft={false} />
+        <Promotion backgroundImage={false} contentPosition="center" imageLeft={true} />
 
         {c_relatedProducts && <FeaturedProducts _products={c_relatedProducts} gridCols={3} />}
         <Business
