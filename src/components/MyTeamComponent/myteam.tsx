@@ -1,18 +1,22 @@
 import * as React from "react";
 import { FC } from "react";
 import Cta from "../cta";
+import { CTA } from "@yext/types";
 
 interface TeamMember {
   id: string;
   name: string;
   mainPhone: string;
   emails: string;
-  c_primaryCTA: string;
+  c_primaryCTA: CTA;
   headshot: { url: string };
-  c_secondaryCTA: string;
+  c_secondaryCTA: CTA;
 }
 
+
+
 const TeamCard: FC<TeamMember> = ({ name,  mainPhone, emails, c_primaryCTA, headshot, c_secondaryCTA, }) => {
+  console.log(JSON.stringify (c_primaryCTA))
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden">
       <div className="p-4 border-b flex items-center space-x-4">
@@ -27,8 +31,11 @@ const TeamCard: FC<TeamMember> = ({ name,  mainPhone, emails, c_primaryCTA, head
           <p className="flex items-center gap-2 text-green-700">📞 <span>{mainPhone}</span></p>
           <p className="flex items-center gap-2 text-green-700">✉️ <a href={`mailto:${emails}`} className="underline">{emails}</a></p>
         </div>
-        <a href={c_primaryCTA} className="mt-2 text-blue-600 flex items-center gap-1 hover:underline">
-          🌐 Visit Profile ➝
+        <a href={c_primaryCTA.link} 
+        className="mt-2 text-blue-600 flex items-center gap-1 hover:underline"
+        
+        >
+        {c_primaryCTA.label}
         </a>
       </div>
     </div>

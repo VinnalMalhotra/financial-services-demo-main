@@ -88,6 +88,7 @@ export const config: TemplateConfig = {
       "c_relatedProfessionals.headshot",
       "c_relatedProfessionals.slug",
       "c_relatedProfessionals.c_relatedBlogs.id",
+      "c_relatedProfessionals.c_primaryCTA",
       "c_relatedProfessionals.c_relatedBlogs.name",
       "c_relatedProfessionals.c_relatedBlogs.primaryPhoto",
       "c_relatedProfessionals.c_relatedBlogs.emails",
