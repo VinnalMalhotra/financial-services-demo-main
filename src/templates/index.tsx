@@ -111,7 +111,7 @@ const Homepage: Template<TemplateRenderProps> = ({ document }) => {
         </section>
       )}
       {document.c_relatedBlogs && (
-        <article className="py-8 flex flex-col md:justify-center md:px-10 w-full mx-auto items-center bg-[#E9F5E7]">
+        <article className="py-8 flex flex-col md:justify-center md:px-10 w-full mx-auto items-center bg-gray-100">
           <Blogs
             linkedArticles={document.c_relatedBlogs}
             parentEntityName={document.name}

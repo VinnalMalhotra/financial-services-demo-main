@@ -25,6 +25,7 @@ import Cta from "../components/cta";
 import Blogs from "../components/relatedSections/Blogs";
 import Carousel from "../components/Carousel";
 import ScrollToTop from "../components/scrollToTop";
+import AnnouncementBanner from "../components/AnnouncementComponent/Announcement";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -166,6 +167,7 @@ const Professional: Template<TemplateRenderProps> = ({
 
   return (
     <PageLayout _site={_site} templateData={{ __meta, document }}>
+      <AnnouncementBanner message={true} position="left"/>
       <section className="centered-container flex flex-col w-full mx-auto items-start text-skin-base py-8">
         <article className="flex  flex-col md:flex-row gap-2 items-start md:items-center">
           <h1 className="text-2xl md:text-3xl font-medium">{name}</h1>
