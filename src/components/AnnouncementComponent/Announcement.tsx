@@ -29,7 +29,7 @@ const AnnouncementBanner: React.FC<AnnouncementBannerProps> = ({
   };
 
   return (
-    <div className="bg-green-700 text-white p-3 text-center relative flex items-center">
+    <div className="bg-green-700 text-white p-3 text-center relative flex items-center centered-container">
       <div className={`flex w-full ${getPositionClass()}`}>
         <span className="text-sm font-medium">{text}</span>
       </div>
