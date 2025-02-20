@@ -262,33 +262,33 @@ const Professional: Template<TemplateRenderProps> = ({
           <img
             src={headshot?.url} // Ensure headshot image is correctly passed
             alt="Headshot"
-            className="rounded-lg w-96 h-96 object-cover shadow-md"
+            className="rounded-lg w-60 h-60 object-cover shadow-md"
             loading="eager"
           />
         </div>
       </section>
 
 
-      <section className="w-full py-8 bg-gray-100">
+      {/* <section className="w-full py-8 bg-gray-100">
         <article className="centered-container flex flex-col w-full mx-auto items-center gap-4 md:gap-8">
           <h2 className="sr-only">Professional Details</h2>
-          <h2 className="text-skin-base text-2xl md:text-4xl font-bold mx-auto text-center">
+          <h2 className="text-2xl font-bold text-black text-center">
             Professional Details
           </h2>
           <section className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
             <section className="flex flex-col gap-4">
               <section>
-                <h3 className="mt-2 text-lg md:text-xl font-medium text-skin-base">
+                <h3 className="text-xl font-bold mb-2">
                   Experience
                 </h3>
-                <p className="text-skin-muted">{yearsOfExperience} Years</p>
+                <p className="">{yearsOfExperience} Years</p>
               </section>
               {c_educationDetails && (
                 <section>
-                  <h3 className="text-lg md:text-xl font-medium text-skin-base">
+                  <h3 className="text-xl font-bold mb-2">
                     Education Details
                   </h3>
-                  <ul className=" flex flex-col gap-1 mt-2 text-skin-muted">
+                  <ul className=" flex flex-col gap-1 mt-2 ">
                     {c_educationDetails.map((item: any, index: number) => (
                       <li key={index}>
                         {item.degree} - {item.university}, {item.year}
@@ -299,10 +299,10 @@ const Professional: Template<TemplateRenderProps> = ({
               )}
               {languages && (
                 <section>
-                  <h3 className="text-lg md:text-xl font-medium text-skin-base">
+                  <h3 className="text-xl font-bold mb-2">
                     Languages
                   </h3>
-                  <ul className=" flex flex-col gap-1 mt-2 text-skin-muted">
+                  <ul className=" flex flex-col gap-1 mt-2 ">
                     {languages.map((item: string[], index: number) => (
                       <li key={index}>{item}</li>
                     ))}
@@ -313,10 +313,10 @@ const Professional: Template<TemplateRenderProps> = ({
             <section className="flex flex-col gap-4">
               {certifications && (
                 <section>
-                  <h3 className="text-lg md:text-xl font-medium text-skin-base">
+                  <h3 className="text-xl font-bold mb-2">
                     Licenses and Certifications
                   </h3>
-                  <ul className=" flex flex-col gap-1 mt-2 text-skin-muted">
+                  <ul className=" flex flex-col gap-1 mt-2 ">
                     {certifications.map((item: string[], index: number) => (
                       <li key={index}>{item}</li>
                     ))}
@@ -325,10 +325,10 @@ const Professional: Template<TemplateRenderProps> = ({
               )}
               {specialities && (
                 <section>
-                  <h3 className="text-lg md:text-xl font-medium text-skin-base">
+                  <h3 className="text-xl font-bold mb-2">
                     Specialities
                   </h3>
-                  <ul className=" flex flex-col gap-1 mt-2 text-skin-muted">
+                  <ul className=" flex flex-col gap-1 mt-2 ">
                     {specialities.map((item: string[], index: number) => (
                       <li key={index}>{item}</li>
                     ))}
@@ -338,10 +338,10 @@ const Professional: Template<TemplateRenderProps> = ({
             </section>
             {c_professionalRecord && (
               <section>
-                <h3 className="text-lg md:text-xl font-medium text-skin-base">
+                <h3 className="text-xl font-bold mb-2">
                   Professional Journey
                 </h3>
-                <ul className=" flex flex-col gap-1 mt-2 text-skin-muted">
+                <ul className=" flex flex-col gap-1 mt-2 ">
                   {c_professionalRecord.map((item: any, index: number) => (
                     <li className="flex" key={index}>
                       {item.position}
@@ -355,7 +355,92 @@ const Professional: Template<TemplateRenderProps> = ({
             )}
           </section>
         </article>
+      </section> */}
+
+
+<section className="w-full py-8 bg-gray-100">
+  <article className="centered-container flex flex-col w-full mx-auto items-center gap-4 md:gap-8">
+    <h2 className="sr-only">Professional Details</h2>
+    <h2 className="text-2xl font-bold text-black text-center">
+      Professional Details
+    </h2>
+    <section className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+      <section className="flex flex-col gap-4">
+        <section>
+          <h3 className="text-xl font-bold mb-2">Experience</h3>
+          <ul className="list-disc pl-5">
+            <li>{yearsOfExperience} Years</li>
+          </ul>
+        </section>
+        {c_educationDetails && (
+          <section>
+            <h3 className="text-xl font-bold mb-2">Education Details</h3>
+            <ul className="list-disc pl-5 flex flex-col gap-1 mt-2">
+              {c_educationDetails.map((item: any, index: number) => (
+                <li key={index}>
+                  {item.degree} - {item.university}, {item.year}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+        {languages && (
+          <section>
+            <h3 className="text-xl font-bold mb-2">Languages</h3>
+            <ul className="list-disc pl-5 flex flex-col gap-1 mt-2">
+              {languages.map((item: string[], index: number) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          </section>
+        )}
       </section>
+      <section className="flex flex-col gap-4">
+        {certifications && (
+          <section>
+            <h3 className="text-xl font-bold mb-2">
+              Licenses and Certifications
+            </h3>
+            <ul className="list-disc pl-5 flex flex-col gap-1 mt-2">
+              {certifications.map((item: string[], index: number) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          </section>
+        )}
+        {specialities && (
+          <section>
+            <h3 className="text-xl font-bold mb-2">Specialities</h3>
+            <ul className="list-disc pl-5 flex flex-col gap-1 mt-2">
+              {specialities.map((item: string[], index: number) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          </section>
+        )}
+      </section>
+      {c_professionalRecord && (
+        <section>
+          <h3 className="text-xl font-bold mb-2">Professional Journey</h3>
+          <ul className="list-disc pl-5 flex flex-col gap-1 mt-2">
+            {c_professionalRecord.map((item: any, index: number) => (
+              <li key={index}>
+                {item.position}
+                {item.organisation ? ` - ${item.organisation}` : ""},{" "}
+                {item.startYear && item.startYear}
+                {item.endYear && ` - ${item.endYear}`}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </section>
+  </article>
+</section>
+
+
+
+
 
       <Promotion backgroundImage={false} contentPosition="center" imageLeft={true} />
 
