@@ -361,21 +361,21 @@ const Professional: Template<TemplateRenderProps> = ({
 <section className="w-full py-8 bg-gray-100">
   <article className="centered-container flex flex-col w-full mx-auto items-center gap-4 md:gap-8">
     <h2 className="sr-only">Professional Details</h2>
-    <h2 className="text-2xl font-bold text-black text-center">
+    <h2 className="text-skin-base text-2xl md:text-3xl font-medium mx-auto text-center">
       Professional Details
     </h2>
     <section className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
       <section className="flex flex-col gap-4">
         <section>
-          <h3 className="text-xl font-bold mb-2">Experience</h3>
-          <ul className="list-disc pl-5">
+          <h3 className="text-xl font-bold  text-skin-base mb-2">Experience</h3>
+          <ul className="list-disc pl-5 text-skin-base">
             <li>{yearsOfExperience} Years</li>
           </ul>
         </section>
         {c_educationDetails && (
           <section>
-            <h3 className="text-xl font-bold mb-2">Education Details</h3>
-            <ul className="list-disc pl-5 flex flex-col gap-1 mt-2">
+            <h3 className="text-xl font-bold mb-2 text-skin-base">Education Details</h3>
+            <ul className="list-disc pl-5 flex flex-col gap-1 mt-2 text-skin-base">
               {c_educationDetails.map((item: any, index: number) => (
                 <li key={index}>
                   {item.degree} - {item.university}, {item.year}
@@ -386,8 +386,8 @@ const Professional: Template<TemplateRenderProps> = ({
         )}
         {languages && (
           <section>
-            <h3 className="text-xl font-bold mb-2">Languages</h3>
-            <ul className="list-disc pl-5 flex flex-col gap-1 mt-2">
+            <h3 className="text-xl font-bold mb-2 text-skin-base">Languages</h3>
+            <ul className="list-disc pl-5 flex flex-col gap-1 mt-2 text-skin-base">
               {languages.map((item: string[], index: number) => (
                 <li key={index}>{item}</li>
               ))}
@@ -395,7 +395,7 @@ const Professional: Template<TemplateRenderProps> = ({
           </section>
         )}
       </section>
-      <section className="flex flex-col gap-4">
+      <section className="flex flex-col gap-4 text-skin-base">
         {certifications && (
           <section>
             <h3 className="text-xl font-bold mb-2">
@@ -421,8 +421,8 @@ const Professional: Template<TemplateRenderProps> = ({
       </section>
       {c_professionalRecord && (
         <section>
-          <h3 className="text-xl font-bold mb-2">Professional Journey</h3>
-          <ul className="list-disc pl-5 flex flex-col gap-1 mt-2">
+          <h3 className="text-xl font-bold mb-2 text-skin-base">Professional Journey</h3>
+          <ul className="list-disc pl-5 flex flex-col gap-1 mt-2 text-skin-base">
             {c_professionalRecord.map((item: any, index: number) => (
               <li key={index}>
                 {item.position}
