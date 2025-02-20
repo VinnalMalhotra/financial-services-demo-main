@@ -9,6 +9,12 @@
  */
 
 import {
+  format_phone,
+  getGoogleMapsLink,
+  getRandomObjects,
+} from "../utils/reusableFunctions";
+
+import {
   GetHeadConfig,
   GetPath,
   GetRedirects,
@@ -249,15 +255,17 @@ const Professional: Template<TemplateRenderProps> = ({
           {/* CTA Buttons - Inline Layout */}
           <div className="flex gap-4 mt-4">
             {/* Get Directions (Primary CTA) */}
-            <Cta
-              cta={{
-                label: "Get Directions",
-                link: "#",
-                linkType: "URL",
-              }}
-              ctaType="primaryCta"
-              otherStyles="px-8 py-3 text-lg font-semibold bg-green-600 text-white border border-green-600 shadow-md hover:bg-green-700"
-            />
+
+            {yextDisplayCoordinate && getGoogleMapsLink && (
+              <a
+                href={getGoogleMapsLink(yextDisplayCoordinate)}
+                className="px-8 uppercase py-3 text-sm font-semibold bg-green-600 text-white border border-green-600 shadow-md hover:bg-green-700"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Get Directions
+              </a>
+            )}
             {/* Book an Appointment (Secondary CTA) */}
             <Cta
               cta={{
@@ -266,7 +274,7 @@ const Professional: Template<TemplateRenderProps> = ({
                 linkType: "URL",
               }}
               ctaType="secondaryCta"
-              otherStyles="px-8 py-3 text-lg font-semibold bg-gray-100 text-gray-800 border border-gray-400 shadow-md hover:bg-gray-200 whitespace-nowrap"
+              otherStyles="px-8 py-3 text-sm font-semibold bg-gray-100 text-gray-800 border border-gray-400 shadow-md hover:bg-gray-200 whitespace-nowrap"
             />
           </div>
         </div>
