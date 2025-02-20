@@ -28,6 +28,7 @@ import ScrollToTop from "../components/scrollToTop";
 import AnnouncementBanner from "../components/AnnouncementComponent/Announcement";
 import FeaturedProducts from "../components/ProductFP.tsx/productfp";
 import Promotion from "../components/PromotionComponent/promotion";
+import BreadCrumbs from "../components/search/breadCrumbs"
 
 
 /**
@@ -67,6 +68,10 @@ export const config: TemplateConfig = {
       "c_relatedLocations.mainPhone",
       "c_relatedLocations.hours",
       "c_relatedLocations.yextDisplayCoordinate",
+      "c_relatedLocations.dm_directoryParents_fins_directory.name",
+      "c_relatedLocations.dm_directoryParents_fins_directory.slug",
+      "c_relatedLocations.dm_directoryParents_fins_directory.id",
+      "c_relatedLocations.dm_directoryParents_fins_directory.c_addressRegionAbbreviation",
     ],
     filter: {
       entityTypes: ["financialProfessional"],
@@ -150,6 +155,7 @@ const Professional: Template<TemplateRenderProps> = ({
     id,
     c_relatedLocations,
     __meta,
+    dm_directoryParents_fins_directory,
   } = document;
   const professionalLocations = [
     {
@@ -170,6 +176,13 @@ const Professional: Template<TemplateRenderProps> = ({
   return (
     <PageLayout _site={_site} templateData={{ __meta, document }}>
       <AnnouncementBanner message={true} position="left" />
+      <article className="centered-container !py-4 hidden md:block">
+        <BreadCrumbs
+          data={c_relatedLocations?.[0]?.dm_directoryParents_fins_directory} // Accessing the first item if it's an array
+          currAddress={address?.line1}
+        />
+      </article>
+
       {/* <section className="centered-container flex flex-col w-full mx-auto items-start text-skin-base py-8">
         <article className="flex  flex-col md:flex-row gap-2 items-start md:items-center">
           <h1 className="text-2xl md:text-3xl font-medium">{name}</h1>
@@ -358,85 +371,85 @@ const Professional: Template<TemplateRenderProps> = ({
       </section> */}
 
 
-<section className="w-full py-8 bg-gray-100">
-  <article className="centered-container flex flex-col w-full mx-auto items-center gap-4 md:gap-8">
-    <h2 className="sr-only">Professional Details</h2>
-    <h2 className="text-skin-base text-2xl md:text-3xl font-medium mx-auto text-center">
-      Professional Details
-    </h2>
-    <section className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
-      <section className="flex flex-col gap-4">
-        <section>
-          <h3 className="text-xl font-bold  text-skin-base mb-2">Experience</h3>
-          <ul className="list-disc pl-5 text-skin-base">
-            <li>{yearsOfExperience} Years</li>
-          </ul>
-        </section>
-        {c_educationDetails && (
-          <section>
-            <h3 className="text-xl font-bold mb-2 text-skin-base">Education Details</h3>
-            <ul className="list-disc pl-5 flex flex-col gap-1 mt-2 text-skin-base">
-              {c_educationDetails.map((item: any, index: number) => (
-                <li key={index}>
-                  {item.degree} - {item.university}, {item.year}
-                </li>
-              ))}
-            </ul>
+      <section className="w-full py-8 bg-gray-100">
+        <article className="centered-container flex flex-col w-full mx-auto items-center gap-4 md:gap-8">
+          <h2 className="sr-only">Professional Details</h2>
+          <h2 className="text-skin-base text-2xl md:text-3xl font-medium mx-auto text-center">
+            Professional Details
+          </h2>
+          <section className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+            <section className="flex flex-col gap-4">
+              <section>
+                <h3 className="text-xl font-bold  text-skin-base mb-2">Experience</h3>
+                <ul className="list-disc pl-5 text-skin-base">
+                  <li>{yearsOfExperience} Years</li>
+                </ul>
+              </section>
+              {c_educationDetails && (
+                <section>
+                  <h3 className="text-xl font-bold mb-2 text-skin-base">Education Details</h3>
+                  <ul className="list-disc pl-5 flex flex-col gap-1 mt-2 text-skin-base">
+                    {c_educationDetails.map((item: any, index: number) => (
+                      <li key={index}>
+                        {item.degree} - {item.university}, {item.year}
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+              {languages && (
+                <section>
+                  <h3 className="text-xl font-bold mb-2 text-skin-base">Languages</h3>
+                  <ul className="list-disc pl-5 flex flex-col gap-1 mt-2 text-skin-base">
+                    {languages.map((item: string[], index: number) => (
+                      <li key={index}>{item}</li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+            </section>
+            <section className="flex flex-col gap-4 text-skin-base">
+              {certifications && (
+                <section>
+                  <h3 className="text-xl font-bold mb-2">
+                    Licenses and Certifications
+                  </h3>
+                  <ul className="list-disc pl-5 flex flex-col gap-1 mt-2">
+                    {certifications.map((item: string[], index: number) => (
+                      <li key={index}>{item}</li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+              {specialities && (
+                <section>
+                  <h3 className="text-xl font-bold mb-2">Specialities</h3>
+                  <ul className="list-disc pl-5 flex flex-col gap-1 mt-2">
+                    {specialities.map((item: string[], index: number) => (
+                      <li key={index}>{item}</li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+            </section>
+            {c_professionalRecord && (
+              <section>
+                <h3 className="text-xl font-bold mb-2 text-skin-base">Professional Journey</h3>
+                <ul className="list-disc pl-5 flex flex-col gap-1 mt-2 text-skin-base">
+                  {c_professionalRecord.map((item: any, index: number) => (
+                    <li key={index}>
+                      {item.position}
+                      {item.organisation ? ` - ${item.organisation}` : ""},{" "}
+                      {item.startYear && item.startYear}
+                      {item.endYear && ` - ${item.endYear}`}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
           </section>
-        )}
-        {languages && (
-          <section>
-            <h3 className="text-xl font-bold mb-2 text-skin-base">Languages</h3>
-            <ul className="list-disc pl-5 flex flex-col gap-1 mt-2 text-skin-base">
-              {languages.map((item: string[], index: number) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-          </section>
-        )}
+        </article>
       </section>
-      <section className="flex flex-col gap-4 text-skin-base">
-        {certifications && (
-          <section>
-            <h3 className="text-xl font-bold mb-2">
-              Licenses and Certifications
-            </h3>
-            <ul className="list-disc pl-5 flex flex-col gap-1 mt-2">
-              {certifications.map((item: string[], index: number) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-          </section>
-        )}
-        {specialities && (
-          <section>
-            <h3 className="text-xl font-bold mb-2">Specialities</h3>
-            <ul className="list-disc pl-5 flex flex-col gap-1 mt-2">
-              {specialities.map((item: string[], index: number) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-          </section>
-        )}
-      </section>
-      {c_professionalRecord && (
-        <section>
-          <h3 className="text-xl font-bold mb-2 text-skin-base">Professional Journey</h3>
-          <ul className="list-disc pl-5 flex flex-col gap-1 mt-2 text-skin-base">
-            {c_professionalRecord.map((item: any, index: number) => (
-              <li key={index}>
-                {item.position}
-                {item.organisation ? ` - ${item.organisation}` : ""},{" "}
-                {item.startYear && item.startYear}
-                {item.endYear && ` - ${item.endYear}`}
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-    </section>
-  </article>
-</section>
 
 
 
