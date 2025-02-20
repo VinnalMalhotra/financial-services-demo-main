@@ -13,11 +13,18 @@ interface CTAProps {
   isBookAnAppointment?: boolean;
 }
 
+// const buildCTAStyles = (ctaType: CTAProps["ctaType"]) => {
+//   return ctaType === "primaryCta"
+//     ? `bg-skin-base text-skin-banner border-skin-base font-medium hover:bg-skin-base/80 hover::border-skin-base/80`
+//     : `bg-skin-banner text-skin-base/80 font-medium border-skin-base/50 hover:border-skin-base hover:text-skin-base`;
+// };
+
 const buildCTAStyles = (ctaType: CTAProps["ctaType"]) => {
   return ctaType === "primaryCta"
-    ? `bg-skin-base text-skin-banner border-skin-base font-medium hover:bg-skin-base/80 hover::border-skin-base/80`
-    : `bg-skin-banner text-skin-base/80 font-medium border-skin-base/50 hover:border-skin-base hover:text-skin-base`;
+    ? `bg-green-600 text-white border-green-600 font-medium hover:bg-green-700 hover:border-green-700`
+    : `bg-gray-200 text-gray-700 font-medium border-gray-400 hover:border-gray-600 hover:text-gray-900`;
 };
+
 
 const Cta = ({
   cta,

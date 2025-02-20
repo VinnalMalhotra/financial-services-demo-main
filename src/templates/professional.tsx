@@ -26,6 +26,9 @@ import Blogs from "../components/relatedSections/Blogs";
 import Carousel from "../components/Carousel";
 import ScrollToTop from "../components/scrollToTop";
 import AnnouncementBanner from "../components/AnnouncementComponent/Announcement";
+import FeaturedProducts from "../components/ProductFP.tsx/productfp";
+import Promotion from "../components/PromotionComponent/promotion";
+
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -81,9 +84,8 @@ export const config: TemplateConfig = {
 export const getPath: GetPath<TemplateProps> = ({ document }) => {
   return document.slug
     ? document.slug
-    : `${document.locale}/${document.address.region}/${document.address.city}/${
-        document.address.line1
-      }-${document.id.toString()}`;
+    : `${document.locale}/${document.address.region}/${document.address.city}/${document.address.line1
+    }-${document.id.toString()}`;
 };
 
 /**
@@ -167,8 +169,8 @@ const Professional: Template<TemplateRenderProps> = ({
 
   return (
     <PageLayout _site={_site} templateData={{ __meta, document }}>
-      <AnnouncementBanner message={true} position="left"/>
-      <section className="centered-container flex flex-col w-full mx-auto items-start text-skin-base py-8">
+      <AnnouncementBanner message={true} position="left" />
+      {/* <section className="centered-container flex flex-col w-full mx-auto items-start text-skin-base py-8">
         <article className="flex  flex-col md:flex-row gap-2 items-start md:items-center">
           <h1 className="text-2xl md:text-3xl font-medium">{name}</h1>
         </article>
@@ -215,8 +217,59 @@ const Professional: Template<TemplateRenderProps> = ({
             isBookAnAppointment={true}
           />
         </article>
+      </section> */}
+
+      <section className="flex w-full items-center justify-between py-8 px-12">
+        {/* Left Section: Business Info */}
+        <div className="w-1/2 flex flex-col items-start gap-2 px-6">
+          {/* Business Name */}
+          <h1 className="text-lg font-semibold">Parkside Bank</h1>
+          <h2 className="text-3xl md:text-4xl font-bold">{name}</h2>
+
+          {/* Ratings Section */}
+          <div className="flex items-center gap-2 mt-2">
+            <span className="text-lg font-semibold">4.5</span>
+            <span className="text-green-500">★★★★★</span>
+            <span className="text-sm text-gray-500">(21 reviews)</span>
+          </div>
+
+          {/* CTA Buttons - Inline Layout */}
+          <div className="flex gap-4 mt-4">
+            {/* Get Directions (Primary CTA) */}
+            <Cta
+              cta={{
+                label: "Get Directions",
+                link: "#",
+                linkType: "URL",
+              }}
+              ctaType="primaryCta"
+              otherStyles="px-8 py-3 text-lg font-semibold bg-green-600 text-white border border-green-600 shadow-md hover:bg-green-700"
+            />
+            {/* Book an Appointment (Secondary CTA) */}
+            <Cta
+              cta={{
+                label: "Book an Appointment",
+                link: "#",
+                linkType: "URL",
+              }}
+              ctaType="secondaryCta"
+              otherStyles="px-8 py-3 text-lg font-semibold bg-gray-100 text-gray-800 border border-gray-400 shadow-md hover:bg-gray-200 whitespace-nowrap"
+            />
+          </div>
+        </div>
+        {/* Right Section: Image */}
+        <div className="w-1/2 flex items-center justify-center px-6">
+          <img
+            src={headshot?.url} // Ensure headshot image is correctly passed
+            alt="Headshot"
+            className="rounded-lg w-96 h-96 object-cover shadow-md"
+            loading="eager"
+          />
+        </div>
       </section>
-      <section className="w-full py-8 bg-skin-accent">
+
+
+      <section className="w-full py-8 bg-gray-100">
         <article className="centered-container flex flex-col w-full mx-auto items-center gap-4 md:gap-8">
           <h2 className="sr-only">Professional Details</h2>
           <h2 className="text-skin-base text-2xl md:text-4xl font-bold mx-auto text-center">
@@ -303,8 +356,33 @@ const Professional: Template<TemplateRenderProps> = ({
           </section>
         </article>
       </section>
+
+      <Promotion backgroundImage={false} contentPosition="center" imageLeft={true} />
+
+      <FeaturedProducts gridCols={3} alignments={{ container: "items-start", text: "text-start" }} />
+
+      <article className="centered-container mt-16 flex flex-col md:flex-row w-full items-center mx-auto mb-16 gap-44">
+        <figure className="w-full md:w-1/4 ml-24">
+          <Image image={headshot} loading="eager" className="rounded-xl" />
+        </figure>
+        <section className="w-full  flex flex-col gap-4 md:w-1/2 p-6">
+          <h2 className="text-2xl md:text-3xl font-medium text-skin-base">
+            {/* <h2 className="sr-only">About me</h2> */}
+            <h2 className="text-2xl md:text-3xl font-medium text-skin-base">
+              About {name}
+            </h2>
+            {/* {name} */}
+          </h2>
+          <p className="text-skin-muted text-sm md:text-base">
+            {description}
+          </p>
+        </section>
+      </article>
+
+
+
       {c_relatedBlogs && (
-        <article className="py-8 flex flex-col md:justify-center w-full mx-auto items-center ">
+        <article className="py-8 flex flex-col md:justify-center w-full mx-auto items-center bg-gray-100 ">
           <Blogs
             linkedArticles={c_relatedBlogs}
             parentEntityName={name}
@@ -312,7 +390,7 @@ const Professional: Template<TemplateRenderProps> = ({
           />
         </article>
       )}
-      <section className="bg-skin-accent w-full py-8">
+      <section className="bg-gray-50 w-full py-8">
         <article className="hidden md:block centered-container">
           <Carousel
             cardsToShow={{ desktop: 3, mobile: 1, tablet: 2 }}
@@ -330,7 +408,7 @@ const Professional: Template<TemplateRenderProps> = ({
           />
         </article>
       </section>
-      <section className="bg-skin-banner  md:text-center w-full py-8">
+      {/* <section className="bg-skin-banner  md:text-center w-full py-8">
         <LetsTalk
           description={description}
           phone={mainPhone}
@@ -338,7 +416,7 @@ const Professional: Template<TemplateRenderProps> = ({
           geoCodedCoordinate={yextDisplayCoordinate}
           cta={c_primaryCTA}
         />
-      </section>
+      </section> */}
       <ScrollToTop />
     </PageLayout>
   );
