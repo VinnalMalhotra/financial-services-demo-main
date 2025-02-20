@@ -232,7 +232,7 @@ const Professional: Template<TemplateRenderProps> = ({
         </article>
       </section> */}
 
-      <section className="flex w-full items-center justify-between py-8 px-12">
+      <section className="flex w-full items-center justify-between border border-gray-200 py-8 px-12">
         {/* Left Section: Business Info */}
         <div className="w-1/2 flex flex-col items-start gap-2 px-6">
           {/* Business Name */}
