@@ -59,7 +59,7 @@ const Header = ({ _site, hasBanner = false }: headerProps) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-console.log(JSON.stringify (_site.c_phototransparentbg.url))
+  console.log(JSON.stringify(_site.c_phototransparentbg.url))
 
   return (
     <>
@@ -82,17 +82,13 @@ console.log(JSON.stringify (_site.c_phototransparentbg.url))
             aria-label="Homepage"
           >
             <img
-              src={
-                !navBg && hasBanner
-                  ? _site.c_phototransparentbg.url // Uploaded image when transparent
-                  : _site.c_image.url // Yext image when scrolled
-              }
+              src={_site.c_image.url} // Yext image when scrolled
               alt="Logo"
-              className="w-full h-full object-cover transition-all duration-300"
+              className={`w-full h-full object-cover transition-all duration-300 ${!navBg && hasBanner ? "invert brightness-0" : ""
+                }`}
               loading="lazy"
             />
           </a>
-
 
           {/* Desktop Menu */}
           <ul className="hidden lg:flex lg:space-x-8 md:items-center">
