@@ -62,29 +62,35 @@ const Header = ({ _site, hasBanner = false }: headerProps) => {
   return (
     <>
       <header
-        className={`hidden md:block w-full top-0 z-50 py-2 ${
-          navBg
-            ? `bg-skin-banner shadow-md fixed`
-            : hasBanner
-              ? `bg-transparent fixed`
-              : ``
-        }`}
+        className={`hidden md:block w-full top-0 z-50 py-2 ${navBg
+          ? `bg-skin-banner shadow-md fixed`
+          : hasBanner
+            ? `bg-transparent fixed`
+            : ``
+          }`}
       >
         <nav
           className="centered-container flex flex-col md:flex-row md:items-center justify-between"
           aria-label="Primary Navigation"
         >
+
           <a
             href="/"
-            className="flex-shrink-0 hidden md:block"
+            className="flex-shrink-0 md:block flex items-center transition-all duration-300 pr-48 w-[150px] md:w-[330px] h-[50px] md:h-[60px]"
             aria-label="Homepage"
           >
-            <Image
-              image={_site.c_image}
-              className="!w-[130px] !md:w-full !max-w-none"
+            <img
+              src={
+                !navBg && hasBanner
+                  ? "https://a.mktgcdn.com/p/ug4G9IPlS2kCXEoRP2QLaySysIC6ey-xUkqw4lUAzIE/3804x629.png" // Uploaded image when transparent
+                  : _site.c_image.url // Yext image when scrolled
+              }
+              alt="Logo"
+              className="w-full h-full object-cover transition-all duration-300"
               loading="lazy"
             />
           </a>
+
 
           {/* Desktop Menu */}
           <ul className="hidden lg:flex lg:space-x-8 md:items-center">
@@ -93,13 +99,11 @@ const Header = ({ _site, hasBanner = false }: headerProps) => {
                 <a
                   href={item.link}
                   onClick={() => setCurrItem(item.name)}
-                  className={`inline-flex items-center border-b-4 font-bold text-[#39852E] ${
-                    !navBg && hasBanner ? `!text-skin-banner` : ``
-                  } px-1 pt-1 text-lg ${
-                    item.name === currItem
+                  className={`inline-flex items-center border-b-4 font-bold text-[#39852E] ${!navBg && hasBanner ? `!text-skin-banner` : ``
+                    } px-1 pt-1 text-lg ${item.name === currItem
                       ? "border-primary"
                       : "border-transparent"
-                  }`}
+                    }`}
                   aria-current={item.link === currItem ? "page" : undefined}
                 >
                   {item.name}
@@ -114,11 +118,10 @@ const Header = ({ _site, hasBanner = false }: headerProps) => {
                   className="flex items-center"
                 >
                   <MagnifyingGlassIcon
-                    className={`h-6 w-6 ${
-                      !navBg && hasBanner
-                        ? `fill-skin-banner`
-                        : `fill-skin-base`
-                    }`}
+                    className={`h-6 w-6 ${!navBg && hasBanner
+                      ? `fill-skin-banner`
+                      : `fill-skin-base`
+                      }`}
                   />
                 </button>
               </li>
@@ -128,13 +131,12 @@ const Header = ({ _site, hasBanner = false }: headerProps) => {
       </header>
       {/* Mobile Header */}
       <header
-        className={`md:hidden py-6 p-8 w-full flex justify-between top-0 z-50 ${
-          navBg
-            ? `bg-skin-banner shadow-md fixed`
-            : hasBanner
-              ? `bg-transparent fixed`
-              : `bg-skin-accent`
-        }`}
+        className={`md:hidden py-6 p-8 w-full flex justify-between top-0 z-50 ${navBg
+          ? `bg-skin-banner shadow-md fixed`
+          : hasBanner
+            ? `bg-transparent fixed`
+            : `bg-skin-accent`
+          }`}
       >
         <a href="/" aria-label="Homepage">
           <Image
@@ -152,9 +154,8 @@ const Header = ({ _site, hasBanner = false }: headerProps) => {
               className="flex items-center"
             >
               <MagnifyingGlassIcon
-                className={`h-6 w-6 ${
-                  !navBg && hasBanner ? `fill-skin-banner` : `fill-skin-base`
-                }`}
+                className={`h-6 w-6 ${!navBg && hasBanner ? `fill-skin-banner` : `fill-skin-base`
+                  }`}
               />
             </button>
           )}
@@ -170,9 +171,8 @@ const Header = ({ _site, hasBanner = false }: headerProps) => {
               <XMarkIcon className="h-6 w-6" />
             ) : (
               <Bars3Icon
-                className={`h-6 w-6 ${
-                  !navBg && hasBanner ? `fill-skin-banner` : `fill-skin-base`
-                }`}
+                className={`h-6 w-6 ${!navBg && hasBanner ? `fill-skin-banner` : `fill-skin-base`
+                  }`}
               />
             )}
           </button>
@@ -224,11 +224,10 @@ const Header = ({ _site, hasBanner = false }: headerProps) => {
                       <a
                         href={item.link}
                         onClick={() => setIsMenuOpen(false)}
-                        className={`${
-                          item.link === currItem
-                            ? "border-skin-base font-semibold text-skin-base"
-                            : "border-transparent font-base text-skin-muted"
-                        } block border-l-4 py-2 pl-3 pr-4 text-lg  `}
+                        className={`${item.link === currItem
+                          ? "border-skin-base font-semibold text-skin-base"
+                          : "border-transparent font-base text-skin-muted"
+                          } block border-l-4 py-2 pl-3 pr-4 text-lg  `}
                       >
                         {item.name}
                       </a>
