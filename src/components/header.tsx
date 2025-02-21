@@ -59,6 +59,8 @@ const Header = ({ _site, hasBanner = false }: headerProps) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+console.log(JSON.stringify (_site.c_phototransparentbg.url))
+
   return (
     <>
       <header
@@ -82,7 +84,7 @@ const Header = ({ _site, hasBanner = false }: headerProps) => {
             <img
               src={
                 !navBg && hasBanner
-                  ? "https://a.mktgcdn.com/p/ug4G9IPlS2kCXEoRP2QLaySysIC6ey-xUkqw4lUAzIE/3804x629.png" // Uploaded image when transparent
+                  ? _site.c_phototransparentbg.url // Uploaded image when transparent
                   : _site.c_image.url // Yext image when scrolled
               }
               alt="Logo"
