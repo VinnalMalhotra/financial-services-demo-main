@@ -59,7 +59,7 @@ const Header = ({ _site, hasBanner = false }: headerProps) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  console.log(JSON.stringify(_site.c_phototransparentbg.url))
+  // console.log(JSON.stringify(_site.c_phototransparentbg.url))
 
   return (
     <>

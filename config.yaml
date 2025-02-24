@@ -17,7 +17,6 @@ siteStream:
     - c_footer
     - c_image
     - logo
-    - c_phototransparentbg
     - c_primaryColor
     - c_secondaryColor
     - c_themeColor
